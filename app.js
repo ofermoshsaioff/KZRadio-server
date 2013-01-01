@@ -29,7 +29,7 @@ app.get('/', function(req, res) {
 function get_kzradio_live_or_vod_url(callback) {
 	request('http://kzradio.net', function(error, response, body) {
 		if (!error && response.statusCode == 200) {
-			var regex = new RegExp('/.+show-live-stream-url.+(http.+)<\/span>.+/');
+			var regex = new RegExp('/.+show-live-stream-url.+(http.+)<\/span>.+?/');
 			var url = regex.exec(body)[1];			
 			console.log(url);
 			return callback(null, url);
